@@ -1,8 +1,9 @@
-import * as d3 from "d3";
+//import * as d3 from "d3";
+import * as d3 from "https://unpkg.com/d3?module";
 
 async function drawLineChart() {
   // 1. Access data
-  let dataset = await d3.json("./washinton_dc_weather.json");
+  let dataset = await d3.json("nyc_weather.json");
 
   // 2. Create chart dimensions
 
@@ -18,8 +19,8 @@ async function drawLineChart() {
       top: 15,
       right: 15,
       bottom: 40,
-      left: 60
-    }
+      left: 60,
+    },
   };
   dimensions.boundedWidth =
     dimensions.width - dimensions.margin.left - dimensions.margin.right;
@@ -123,7 +124,7 @@ async function drawLineChart() {
 
     return {
       date: d3.timeFormat("%Y-%m-%d")(nextDay),
-      temperatureMax: yAccessor(lastDataPoint) + (Math.random() * 6 - 3)
+      temperatureMax: yAccessor(lastDataPoint) + (Math.random() * 6 - 3),
     };
   }
 }
